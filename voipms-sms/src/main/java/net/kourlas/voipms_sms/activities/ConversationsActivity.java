@@ -34,6 +34,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -258,7 +259,7 @@ public class ConversationsActivity
     private void preRecentUpdate() {
         adapter.refresh();
         pushNotifications
-            .registerForFcm(conversationsActivity, null, false, false);
+            .registerForGcm(conversationsActivity, null, false, false);
         database.synchronize(true, false, conversationsActivity);
     }
 
@@ -293,6 +294,7 @@ public class ConversationsActivity
             case R.id.preferences_button:
                 Intent preferencesIntent =
                     new Intent(this, PreferencesActivity.class);
+                Log.v("sdfsdf","orefintnet");
                 startActivity(preferencesIntent);
                 return true;
             case R.id.help_button:
@@ -499,7 +501,7 @@ public class ConversationsActivity
     private void preFullUpdate() {
         adapter.refresh();
         pushNotifications
-            .registerForFcm(conversationsActivity, null, false, false);
+            .registerForGcm(conversationsActivity, null, false, false);
         database.synchronize(false, true, conversationsActivity);
     }
 

@@ -132,11 +132,12 @@
                             android:background="@android:color/white"
                             android:gravity="start"
                             android:hint="@string/conversation_text_hint"
-                            android:inputType="textMultiLine|textCapSentences|textAutoCorrect|textShortMessage"
+                            android:inputType="textMultiLine|textCapSentences|textAutoCorrect"
                             android:isScrollContainer="true"
                             android:maxLines="4"
                             android:padding="10dp"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:textColor="@color/message_translucent_dark_grey" />
 
                         <TextView
                             android:id="@+id/chars_remaining_text"

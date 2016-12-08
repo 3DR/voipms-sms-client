@@ -79,6 +79,7 @@ public class Database {
     private final Preferences preferences;
     private final SQLiteDatabase database;
 
+
     /**
      * Initializes an instance of the Database class.
      *
@@ -167,10 +168,8 @@ public class Database {
             + COLUMN_VOIP_ID + "=" + voipId,
             null, null, null, null);
         if (cursor.moveToFirst()) {
-            long databaseId = cursor.getLong(cursor.getColumnIndexOrThrow(
+            return cursor.getLong(cursor.getColumnIndexOrThrow(
                 COLUMN_DATABASE_ID));
-            cursor.close();
-            return databaseId;
         }
         cursor.close();
         return null;
@@ -193,6 +192,7 @@ public class Database {
             + COLUMN_VOIP_ID + "=" + voipId,
             null, null, null, null);
         List<Message> messages = getMessageListFromCursor(cursor);
+        cursor.close();
         if (messages.size() > 0) {
             return messages.get(0);
         } else {
@@ -285,7 +285,7 @@ public class Database {
             + "INNER JOIN (SELECT " + COLUMN_DATABASE_ID + ", "
             + COLUMN_CONTACT + ", MAX(" + COLUMN_DATE + ") AS " + COLUMN_DATE
             + " FROM " + TABLE_MESSAGE
-            + " WHERE (" + COLUMN_MESSAGE + " LIKE ? COLLATE NOCASE"
+            + " WHERE (" + COLUMN_MESSAGE + " LIKE ? COLLATE UTF8_GENERAL_CI"
             + numericFilterStringQuery + ") AND " + COLUMN_DID + "=" + did
             + " AND " + COLUMN_DELETED + "=0 "
             + "GROUP BY " + COLUMN_CONTACT + ") b on a."
@@ -295,6 +295,7 @@ public class Database {
             + " DESC";
         Cursor cursor = database.rawQuery(query, params);
         List<Message> messages = getMessageListFromCursor(cursor);
+        cursor.close();
 
         // Then, retrieve the most recent message for each conversation without
         // filtering; if any conversation present in the second list is not
@@ -371,6 +372,7 @@ public class Database {
             + COLUMN_DRAFT + "=1",
             null, null, null, null);
         List<Message> messages = getMessageListFromCursor(cursor);
+        cursor.close();
         if (messages.size() > 0) {
             return messages.get(0);
         } else {
@@ -726,6 +728,7 @@ public class Database {
             COLUMN_DATABASE_ID + "=" + databaseId,
             null, null, null, null);
         List<Message> messages = getMessageListFromCursor(cursor);
+        cursor.close();
         if (messages.size() > 0) {
             return messages.get(0);
         } else {

@@ -309,7 +309,7 @@ public class Utils {
     {
         URL url = new URL(urlString);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.setReadTimeout(15000);
+        connection.setReadTimeout(10000);
         connection.setConnectTimeout(15000);
         connection.setRequestMethod("GET");
         connection.setDoInput(true);
@@ -354,16 +354,16 @@ public class Utils {
      * @param view The view to apply the mask to.
      */
     public static void applyCircularMask(View view) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            view.setOutlineProvider(new ViewOutlineProvider() {
-                @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-                @Override
-                public void getOutline(View view, Outline outline) {
-                    outline.setOval(0, 0, view.getWidth(), view.getHeight());
-                }
-            });
-            view.setClipToOutline(true);
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            view.setOutlineProvider(new ViewOutlineProvider() {
+//                @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+//                @Override
+//                public void getOutline(View view, Outline outline) {
+//                    outline.setOval(0, 0, view.getWidth(), view.getHeight());
+//                }
+//            });
+//            view.setClipToOutline(true);
+//        }
     }
 
     /**
@@ -375,16 +375,16 @@ public class Utils {
         final Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),
                                                   bitmap.getHeight(),
                                                   Bitmap.Config.ARGB_8888);
-        final Canvas canvas = new Canvas(output);
-        final Paint paint = new Paint();
-        final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
-
-        canvas.drawARGB(0, 0, 0, 0);
-        canvas.drawCircle(bitmap.getWidth() / 2, bitmap.getHeight() / 2,
-                          bitmap.getWidth() / 2, paint);
-        paint.setAntiAlias(true);
-        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-        canvas.drawBitmap(bitmap, rect, rect, paint);
+//        final Canvas canvas = new Canvas(output);
+//        final Paint paint = new Paint();
+//        final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+//
+//        canvas.drawARGB(0, 0, 0, 0);
+//        canvas.drawCircle(bitmap.getWidth() / 2, bitmap.getHeight() / 2,
+//                          bitmap.getWidth() / 2, paint);
+//        paint.setAntiAlias(true);
+//        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+//        canvas.drawBitmap(bitmap, rect, rect, paint);
         return output;
     }
 
@@ -398,16 +398,16 @@ public class Utils {
      */
     public static void applyRoundedCornersMask(View view) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            view.setOutlineProvider(new ViewOutlineProvider() {
-                @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-                @Override
-                public void getOutline(View view, Outline outline) {
-                    outline
-                        .setRoundRect(0, 0, view.getWidth(), view.getHeight(),
-                                      15);
-                }
-            });
-            view.setClipToOutline(true);
+//            view.setOutlineProvider(new ViewOutlineProvider() {
+//                @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+//                @Override
+//                public void getOutline(View view, Outline outline) {
+//                    outline
+//                        .setRoundRect(0, 0, view.getWidth(), view.getHeight(),
+//                                      15);
+//                }
+//            });
+//            view.setClipToOutline(true);
         }
     }
 
@@ -510,36 +510,5 @@ public class Utils {
             }
         }
         return stringBuilder.toString();
-    }
-
-    /**
-     * Returns the string representation of the specified phone number type.
-     *
-     * @param type The specified phone number type.
-     * @return The string representation of the specified phone number type.
-     */
-    public static String getPhoneNumberType(int type) {
-        switch (type) {
-            case ContactsContract.CommonDataKinds.Phone.TYPE_HOME:
-                return "Home";
-            case ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE:
-                return "Mobile";
-            case ContactsContract.CommonDataKinds.Phone.TYPE_WORK:
-                return "Work";
-            case ContactsContract.CommonDataKinds.Phone.TYPE_FAX_HOME:
-                return "Home Fax";
-            case ContactsContract.CommonDataKinds.Phone.TYPE_FAX_WORK:
-                return "Work Fax";
-            case ContactsContract.CommonDataKinds.Phone.TYPE_MAIN:
-                return "Main";
-            case ContactsContract.CommonDataKinds.Phone.TYPE_OTHER:
-                return "Other";
-            case ContactsContract.CommonDataKinds.Phone.TYPE_CUSTOM:
-                return "Custom";
-            case ContactsContract.CommonDataKinds.Phone.TYPE_PAGER:
-                return "Pager";
-            default:
-                return "";
-        }
     }
 }

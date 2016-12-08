@@ -33,4 +33,8 @@
         android:icon="@drawable/ic_delete_white_24dp"
         android:title="@string/conversation_action_delete"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/customize_button"
+        android:title="@string/conversation_action_customize"
+        app:showAsAction="never" />
 </menu>

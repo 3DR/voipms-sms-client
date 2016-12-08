@@ -16,14 +16,19 @@
   -->
 
 <resources>
-    <color name="primary">#AA3939</color>
-    <color name="primary_dark">#801515</color>
-    <color name="accent">#D4686A</color>
-    <color name="translucent_black">#CC000000</color>
+    <color name="primary">#E32A67</color>
+    <color name="primary_dark">#C3295C</color>
+    <color name="accent">#415660</color>
+    <color name="translucent_black">#00ffffff</color>
     <color name="highlight">#F3F315</color>
-    <color name="dark_gray">#656363</color>
-    <color name="background">#F3F3F3</color>
+    <color name="dark_gray">#263238</color>
+    <color name="background">#263238</color>
 
-    <color name="message_translucent_white">#89FFFFFF</color>
-    <color name="message_translucent_dark_grey">#89656363</color>
+    <color name="message_translucent_white">#daf5f5f5</color>
+    <color name="message_translucent_dark_grey">#e6424242</color>
+    <color name="blue">#2196f3</color>
+    <color name="clear">#00ffffff</color>
+    <color name="pink">#ff8a80</color>
+    <color name="replybackground">#263238</color>
+    <color name="white">#ffffff</color>
 </resources>

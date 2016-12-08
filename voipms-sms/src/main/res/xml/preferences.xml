@@ -43,22 +43,22 @@
             android:key="@string/preferences_sync_start_date_key"
             android:numeric="integer"
             android:title="@string/preferences_sync_start_date_title" />
-        <net.kourlas.voipms_sms.preferences.CustomSwitchPreference
+        <SwitchPreference
             android:defaultValue="false"
             android:key="@string/preferences_sync_retrieve_only_recent_messages_key"
             android:summary="@string/preferences_sync_retrieve_only_recent_messages_summary"
             android:title="@string/preferences_sync_retrieve_only_recent_messages_title" />
-        <net.kourlas.voipms_sms.preferences.CustomSwitchPreference
+        <SwitchPreference
             android:defaultValue="false"
             android:key="@string/preferences_sync_retrieve_deleted_messages_key"
             android:summary="@string/preferences_sync_retrieve_deleted_messages_summary"
             android:title="@string/preferences_sync_retrieve_deleted_messages_title" />
-        <net.kourlas.voipms_sms.preferences.CustomSwitchPreference
+        <SwitchPreference
             android:defaultValue="false"
             android:key="@string/preferences_sync_propagate_local_deletions_key"
             android:summary="@string/preferences_sync_propagate_local_deletions_summary"
             android:title="@string/preferences_sync_propagate_local_deletions_title" />
-        <net.kourlas.voipms_sms.preferences.CustomSwitchPreference
+        <SwitchPreference
             android:defaultValue="false"
             android:key="@string/preferences_sync_propagate_remote_deletions_key"
             android:summary="@string/preferences_sync_propagate_remote_deletions_summary"
@@ -66,12 +66,12 @@
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/preferences_notifications_category_name">
-        <net.kourlas.voipms_sms.preferences.CustomSwitchPreference
+        <SwitchPreference
             android:defaultValue="true"
             android:key="@string/preferences_notifications_enable_key"
             android:summary="@string/preferences_notifications_enable_summary"
             android:title="@string/preferences_notifications_enable_title" />
-        <net.kourlas.voipms_sms.preferences.CustomSwitchPreference
+        <net.kourlas.voipms_sms.preferences.PushNotificationsPreference
             android:defaultValue="false"
             android:dependency="@string/preferences_notifications_enable_key"
             android:key="@string/preferences_notifications_push_enable_key"
@@ -83,7 +83,7 @@
             android:key="@string/preferences_notifications_sound_key"
             android:ringtoneType="notification"
             android:title="@string/preferences_notifications_sound_title" />
-        <net.kourlas.voipms_sms.preferences.CustomSwitchPreference
+        <SwitchPreference
             android:defaultValue="true"
             android:dependency="@string/preferences_notifications_enable_key"
             android:key="@string/preferences_notifications_vibrate_key"

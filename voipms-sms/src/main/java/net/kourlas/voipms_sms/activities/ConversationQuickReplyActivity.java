@@ -31,6 +31,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewOutlineProvider;
@@ -178,6 +179,7 @@ public class ConversationQuickReplyActivity extends AppCompatActivity {
      * @param str The new text.
      */
     private void onMessageTextChange(String str) {
+        Log.d("Button","text");
         ViewSwitcher viewSwitcher =
             (ViewSwitcher) findViewById(R.id.view_switcher);
         if (str.equals("")
@@ -284,9 +286,11 @@ public class ConversationQuickReplyActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+
             case android.R.id.home:
                 finish();
                 return true;
+
         }
         return super.onOptionsItemSelected(item);
     }

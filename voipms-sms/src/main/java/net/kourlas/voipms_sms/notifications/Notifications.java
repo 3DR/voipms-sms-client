@@ -16,7 +16,16 @@
  */
 
 package net.kourlas.voipms_sms.notifications;
-
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.RemoteInput;
+import android.support.v4.app.TaskStackBuilder;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -27,8 +36,10 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
-import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
+import android.util.Log;
+import net.kourlas.voipms_sms.activities.CustomizeActivity;
+
 import net.kourlas.voipms_sms.R;
 import net.kourlas.voipms_sms.activities.ActivityMonitor;
 import net.kourlas.voipms_sms.activities.ConversationActivity;
@@ -44,16 +55,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Notifications {
+
+
+public class Notifications{
     private static Notifications instance = null;
 
     private final Context applicationContext;
     private final Database database;
     private final Preferences preferences;
-
+    public static SharedPreferences prefs;
     private final Map<String, Integer> notificationIds;
     private int notificationIdCount;
 
+    private Context nContext;
     private Notifications(Context context) {
         this.applicationContext = context.getApplicationContext();
         this.database = Database.getInstance(applicationContext);
@@ -61,6 +75,7 @@ public class Notifications {
 
         this.notificationIds = new HashMap<>();
         this.notificationIdCount = 0;
+
     }
 
     public static Notifications getInstance(Context applicationContext) {
@@ -130,7 +145,6 @@ public class Notifications {
         }
     }
 
-
     /**
      * Shows a notification with the specified details.
      *
@@ -160,7 +174,25 @@ public class Notifications {
             notification.setSound(Uri.parse(Preferences.getInstance(
                 applicationContext).getNotificationSound()));
         }
-        notification.setLights(0xFFAA0000, 1000, 5000);
+        String num = Utils.getFormattedPhoneNumber(contact);
+        Log.v("prior", num);
+
+
+        SharedPreferences sharedPreferences = applicationContext.getSharedPreferences("ledData", Context.MODE_PRIVATE);
+        String cNm = sharedPreferences.getString(title, "3000");
+        SharedPreferences sharedPref = applicationContext.getSharedPreferences("color", Context.MODE_PRIVATE);
+        int clr = sharedPref.getInt(title, 0xFF02ffff);
+        Log.v("saved rate of ", cNm + " for " + title);
+        int ledSpeed = 3000;
+        int color = 0xFF02ffff;
+
+        if (cNm.equals("500") || cNm.equals("3000")){
+            ledSpeed = Integer.parseInt(cNm);
+            color = clr;
+        }
+
+        notification.setLights(color, ledSpeed, ledSpeed);
+
         if (Preferences.getInstance(applicationContext)
                        .getNotificationVibrateEnabled())
         {
@@ -168,7 +200,7 @@ public class Notifications {
         } else {
             notification.setVibrate(new long[] {0});
         }
-        notification.setColor(0xFFAA0000);
+        notification.setColor(0xFF546e7a);
         notification.setAutoCancel(true);
         notification.setStyle(new NotificationCompat.BigTextStyle()
                                   .bigText(longText));

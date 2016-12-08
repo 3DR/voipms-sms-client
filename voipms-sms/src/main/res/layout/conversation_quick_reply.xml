@@ -18,18 +18,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/translucent_black"
-              android:orientation="vertical">
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@android:color/transparent"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:titleTextAppearance="@style/ToolbarTitle" />
+    android:background="@color/accent"
+              android:orientation="vertical"
+    android:backgroundTint="@color/accent"
+    android:theme="@android:style/Theme.Material"
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/reply_to_edit_text"
@@ -111,11 +104,12 @@
                 android:background="@android:color/white"
                 android:gravity="start"
                 android:hint="@string/conversation_text_hint"
-                android:inputType="textMultiLine|textCapSentences|textAutoCorrect|textShortMessage"
+                android:inputType="textMultiLine|textCapSentences|textAutoCorrect"
                 android:isScrollContainer="true"
                 android:maxLines="4"
                 android:padding="10dp"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textColor="@color/message_translucent_dark_grey" />
 
             <TextView
                 android:id="@+id/chars_remaining_text"

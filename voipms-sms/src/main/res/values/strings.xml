@@ -21,6 +21,7 @@
     <string name="conversation_action_resend">Resend</string>
     <string name="conversation_action_search">Search</string>
     <string name="conversation_action_delete">Delete</string>
+    <string name="conversation_action_customize">Customize</string>
     <string name="conversation_action_send">Send</string>
     <string name="conversation_action_copy">Copy text</string>
     <string name="conversation_action_share">Share</string>
@@ -103,10 +104,11 @@
     <string name="notifications_callback_progress">Configuring VoIP.ms URL callback…</string>
     <string name="notifications_callback_success">VoIP.ms URL callback configured successfully. (406)</string>
     <string name="notifications_callback_fail">Failed to configure VoIP.ms URL callback. You must complete this step manually in order to use notifications. (405)\n\nTo configure the URL callback, you must access the SMS settings for your DID on the VoIP.ms portal. Enable the \"SMS URL Callback\" feature and enter the following URL into the neighbouring field:\n\nhttp://voipmssms-kourlas.rhcloud.com/sms_callback?did={TO}</string>
-    <string name="notifications_fcm_progress">Registering for Firebase Cloud Messaging…</string>
-    <string name="notifications_fcm_success">Firebase Cloud Messaging registration succeeded. (400)</string>
-    <string name="notifications_fcm_play_services">This device does not support Google Play Services. (401)</string>
-    <string name="notifications_fcm_fail">Firebase Cloud Messaging registration failed. Please try again later. (403)</string>
+    <string name="notifications_gcm_progress">Registering for Google Cloud Messaging…</string>
+    <string name="notifications_gcm_success">Google Cloud Messaging registration succeeded. (400)</string>
+    <string name="notifications_gcm_play_services">This device does not support Google Play Services. (401)</string>
+    <string name="notifications_gcm_fail">Google Cloud Messaging registration failed. Please try again later. (403)</string>
+    <string name="notifications_gcm_sender_id" translatable="false">626231576786</string>
     <string name="notifications_button_reply">Reply</string>
     <string name="notifications_button_mark_read">Mark Read</string>
 
@@ -154,7 +156,8 @@
     <string name="preferences_notifications_enable_summary">Show notifications when new messages are retrieved during synchronization</string>
     <string name="preferences_notifications_push_enable_key" translatable="false">sms_notification</string>
     <string name="preferences_notifications_push_enable_title">Push notifications</string>
-    <string name="preferences_notifications_push_enable_summary">Enable push notifications using the developer\'s Firebase Cloud Messaging server</string>
+    <string name="preferences_notifications_push_enable_summary">Enable push notifications using the developer\'s Google Cloud Messaging server</string>
+    <string name="preferences_notifications_push_enable_dialog_text">To enable notifications, you must first access the SMS settings for your DID on the VoIP.ms portal. Enable the \"SMS URL Callback\" feature and enter the following URL into the neighbouring field:\n\nhttp://voipmssms-kourlas.rhcloud.com/sms_callback?did={TO}\n\nNote that the developer\'s server will store your DID to forward callbacks from VoIP.ms to your device. See Help for more details.</string>
     <string name="preferences_notifications_sound_key" translatable="false">sms_notification_ringtone</string>
     <string name="preferences_notifications_sound_title">Sound</string>
     <string name="preferences_notifications_sound_default_value" translatable="false">content://settings/system/notification_sound</string>
@@ -173,7 +176,8 @@
     <string name="preferences_database_delete_confirm_message">This action cannot be undone.</string>
     <!-- Uncategorized -->
     <string name="preferences_dids_key" translatable="false">dids</string>
-    <string name="preferences_fcm_token_key" translatable="false">registration_id</string>
+    <string name="preferences_gcm_instance_id_key" translatable="false">instance_id</string>
+    <string name="preferences_gcm_token_key" translatable="false">registration_id</string>
     <string name="preferences_sync_last_complete_time_key">sync_last_complete_time</string>
 
     <!-- Utils -->
@@ -188,4 +192,77 @@
     <string name="cancel">Cancel</string>
     <string name="delete">Delete</string>
     <string name="settings">Settings</string>
+    <string name="title_activity_customization_settings">Settings</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_title_social_recommendations">Enable social recommendations</string>
+    <string name="pref_description_social_recommendations">Recommendations for people to contact
+        based on your message history
+    </string>
+
+    <string name="pref_title_display_name">Display name</string>
+    <string name="pref_default_display_name">John Smith</string>
+
+    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string-array name="pref_example_list_titles">
+        <item>Always</item>
+        <item>When possible</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_data_sync">Data &amp; sync</string>
+
+    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <string-array name="list_preference_entries">
+        <item>Entry 1</item>
+        <item>Entry 2</item>
+        <item>Entry 3</item>
+    </string-array>
+
+    <string-array name="list_preference_entry_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="multi_select_list_preference_default_value" />
+
+    <string name="pref_title_system_sync_settings">System sync settings</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Notifications</string>
+
+    <string name="pref_title_new_message_notifications">New message notifications</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+
+    <string name="pref_title_vibrate">Vibrate</string>
 </resources>

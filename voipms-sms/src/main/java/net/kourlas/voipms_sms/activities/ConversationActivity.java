@@ -43,6 +43,7 @@ import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.*;
 import android.widget.*;
@@ -392,12 +393,20 @@ public class ConversationActivity
                     return onCallButtonClick();
                 case R.id.delete_button:
                     return onDeleteAllButtonClick();
+                case R.id.customize_button:
+                    String contactName = Utils.getContactName(this, contact);
+                    Log.v("Contact name", contactName);
+                    Intent customizeIntent =
+                            new Intent(this, CustomizeActivity.class);
+                    customizeIntent.putExtra("contact", contactName);
+                    startActivity(customizeIntent);
+                    return true;
             }
         }
 
         return super.onOptionsItemSelected(item);
     }
-
+////////////////////////////////////////////////////////
     /**
      * Handler for the call button.
      */

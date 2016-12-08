@@ -20,6 +20,8 @@ package net.kourlas.voipms_sms.preferences;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.widget.Toast;
+
 import net.kourlas.voipms_sms.R;
 
 import java.util.Date;
@@ -47,6 +49,10 @@ public class Preferences {
         return instance;
     }
 
+    public void setColor(String contact, String led) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+    }
     public String getEmail() {
         return sharedPreferences.getString(applicationContext.getString(
             R.string.preferences_account_email_key), "");
@@ -138,16 +144,28 @@ public class Preferences {
             R.string.preferences_notifications_push_enable_key), false);
     }
 
-    public String getFcmToken() {
+    public String getGcmInstanceId() {
+        return sharedPreferences.getString(applicationContext.getString(
+            R.string.preferences_gcm_instance_id_key), "");
+    }
+
+    public void setGcmInstanceId(String instanceId) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(applicationContext.getString(
+            R.string.preferences_gcm_instance_id_key), instanceId);
+        editor.apply();
+    }
+
+    public String getGcmToken() {
         return sharedPreferences.getString(
-            applicationContext.getString(R.string.preferences_fcm_token_key),
+            applicationContext.getString(R.string.preferences_gcm_token_key),
             "");
     }
 
-    public void setFcmToken(String gcmToken) {
+    public void setGcmToken(String gcmToken) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(
-            applicationContext.getString(R.string.preferences_fcm_token_key),
+            applicationContext.getString(R.string.preferences_gcm_token_key),
             gcmToken);
         editor.apply();
     }
