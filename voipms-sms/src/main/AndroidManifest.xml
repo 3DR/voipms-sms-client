@@ -75,6 +75,12 @@
             android:name=".activities.ConversationActivity"
             android:parentActivityName=".activities.ConversationsActivity" />
         <activity
+            android:name=".activities.CustomizeActivity"
+            android:label="Customize"
+            android:parentActivityName=".activities.ConversationsActivity" />
+
+
+        <activity
             android:name=".activities.ConversationQuickReplyActivity"
             android:excludeFromRecents="true"
             android:noHistory="true"
@@ -142,7 +148,6 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".activities.CustomizeActivity" />
 
     </application>
 

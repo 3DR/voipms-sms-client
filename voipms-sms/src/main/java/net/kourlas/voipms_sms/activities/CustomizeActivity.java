@@ -21,6 +21,7 @@ public class CustomizeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customize);
+
         Log.v("name", contactName);
 
         Intent i = getIntent();
@@ -31,6 +32,25 @@ public class CustomizeActivity extends AppCompatActivity {
         }
         Log.v("name", contactName);
         saveLed();
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ActivityMonitor.getInstance().deleteReferenceToActivity(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        ActivityMonitor.getInstance().deleteReferenceToActivity(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ActivityMonitor.getInstance().setCurrentActivity(this);
     }
 
     public void saveLed(){
